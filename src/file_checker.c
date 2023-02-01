@@ -46,7 +46,8 @@ int ft_typo(int fd, int i, int y)
         {
             y = -1;
             while (split[i][++y])
-                if (!ft_isdigit(split[i][y]) && split[i][y] != '\n'&& ft_is_neg(split[i], y))
+                if (!ft_isdigit(split[i][y]) && split[i][y] != '\n' &&
+                ft_is_neg(split[i], y))
                     return (ft_free("%p, %P", gnl, split) + 1);
         }
         ft_free("%p, %P", gnl, split);
@@ -76,7 +77,7 @@ int ft_file_checker(char *str)
     else if (ft_extension(str))
         return (ft_ret("wrong extension", fd, 1));
     else if (ft_typo(fd, 0, 0))
-        return (ft_ret("empty file or incorrect typo\n", fd, 1)); // 1 > le reste ft_ret
+        return (ft_ret("empty file or incorrect typo\n", fd, 1));
     else if (ft_len_check(str))
         return (ft_ret("different line size\n", fd, 1));
     return (0);

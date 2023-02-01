@@ -47,7 +47,6 @@ int main(int argc, char **argv);
 int ft_ret(char *str, int fd, int ret);
 int ft_free(const char *formats, ...);
 int ft_is_neg(char *str, int y);
-//int ft_input(int key_code, t_vars *vars);
 int ft_line_length(int fd);
 int ft_windows_init(t_vars *vars);
 int ft_engine_init(char *str);
