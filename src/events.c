@@ -28,12 +28,12 @@ int ft_keyboard(int input, t_vars *vars)
 
 int ft_mouse(int input, t_vars *vars)
 {
-    (void)vars;
+//    (void)vars;
     if (input == scroll_forward || input == scroll_backward)
 //        ft_outlook();
         printf("scroll\n");
-    else if (input == click_right)
-        printf("click\n");
+    else if (input == click_left)
+        printf("click %p\n", vars); // to print adress
     return (0);
 }
 
@@ -44,7 +44,7 @@ int ft_windows_init(t_vars *vars)
 
     vars->mlx = mlx_init();
     vars->win = mlx_new_window(vars->mlx, 640, 480, "FDF 42");
-    mlx_key_hook(vars->win, ft_keyboard, vars); //&vars ??
-    mlx_mouse_hook(vars->win, ft_mouse, vars); //&vars ??
+    mlx_key_hook(vars->win, ft_keyboard, vars);
+    mlx_mouse_hook(vars->win, ft_mouse, vars);
     return (0);
 }

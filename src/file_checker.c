@@ -46,8 +46,7 @@ int ft_typo(int fd, int i, int y)
         {
             y = -1;
             while (split[i][++y])
-                if (!ft_isdigit(split[i][y]) && split[i][y] != '\n'&&
-                split[i][y] != '-')
+                if (!ft_isdigit(split[i][y]) && split[i][y] != '\n'&& ft_is_neg(split[i], y))
                     return (ft_free("%p, %P", gnl, split) + 1);
         }
         ft_free("%p, %P", gnl, split);

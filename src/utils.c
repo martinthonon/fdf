@@ -61,3 +61,12 @@ int ft_line_length(int fd)
     printf("%d\n", len);
     return (ft_free("%p, %P", gnl, split) + len);
 }
+
+int ft_is_neg(char *str, int y)
+{
+    printf("%c\n", str[y + 1]);
+    if (str[y] == '-')
+        if (!ft_isdigit(str[y + 1]))
+            return (1);
+    return (0);
+}
