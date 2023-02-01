@@ -2,38 +2,37 @@
 
 
 
-//void ft_grid_size(int fd)
-//{
-//    char *gnl;
-//    char **split;
-//    int length;
-//    int height;
-//    height = 0;
-//    gnl = ft_get_next_line(fd);
-//    while (gnl)
-//    {
-//        length = 0;
-//        split = ft_split(gnl, ' ');
-//        while (*split)
-//        {
-//            if (**split != '\n')
-//                ++length;
-//            ++split;
-//        }
-//        ++height;
-//        gnl = ft_get_next_line(fd);
-//    }
-//}
-
-int ft_engine_init(char *str)
+void ft_grid_size(int fd, int *length, int *width)
 {
-    (void)str;
-    int length = 0;
-    int height = 0;
+    char *gnl;
+    char **split;
 
-//    ft_grid_size(fd);
-    printf("length : %d  height : %d\n", length, height);
+    *width = 0;
+    gnl = ft_get_next_line(fd);
+    while (gnl)
+    {
+        *length = 0;
+        split = ft_split(gnl, ' ');
+        while (*split)
+        {
+            if (**split != '\n')
+                ++(*length);
+            ++split;
+        }
+        ++(*width);
+        gnl = ft_get_next_line(fd);
+    }
+}
 
+int ft_engine_init(char *str, int *length, int *width)
+{
+    int fd;
+
+    fd = open(str, O_RDONLY);
+    if (fd < 0)
+        return (1);
+    ft_grid_size(fd, length, width);
+    printf("length -> %d, width -> %d\n", *length, *width);
 
     return (0);
 }

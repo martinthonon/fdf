@@ -38,7 +38,7 @@ int ft_windows_init(t_vars *vars)
     printf("windows init\n");
 
     vars->mlx = mlx_init();
-    vars->win = mlx_new_window(vars->mlx, 640, 480, "FDF 42");
+    vars->win = mlx_new_window(vars->mlx, 1700, 1000, "FDF 42");
     mlx_key_hook(vars->win, ft_keyboard, vars);
     mlx_mouse_hook(vars->win, ft_mouse, vars);
     mlx_hook(vars->win, 17, 1L<<0, ft_close, vars);
