@@ -49,6 +49,6 @@ int ft_free(const char *formats, ...);
 int ft_is_neg(char *str, int y);
 int ft_line_length(int fd);
 int ft_windows_init(t_vars *vars);
-int ft_engine_init(char *str, int *length, int *width);
+int ft_engine_init(char *str);
 int ft_file_checker(char *str);
 #endif
