@@ -1,8 +1,5 @@
 #include "fdf.h"
 
-// TODO
-// is num >= NUM_MAX
-
 int ft_len_check(char *str)
 {
     int fd;
