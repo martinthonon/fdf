@@ -23,13 +23,6 @@ typedef struct s_axis  {
     int z;
 }               t_axis;
 
-//typedef struct s_fd {
-//
-//    short fd;
-//    char *path;
-//
-//}               t_fd;
-
 typedef struct s_fdf {
 
     t_axis pos;

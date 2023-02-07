@@ -9,24 +9,25 @@ int ft_close(t_fdf *fdf)
 
 int ft_keyboard(int input, t_fdf *fdf)
 {
-    if (input == key_w || input == key_s || input == key_a || input == key_d)
-//      ft_motion();
-        printf("key code %d\n", input);
-    else if (input == key_plus || input == key_min)
-//      ft_resize();
-        printf("up and down\n");
-    else if (input == key_esc)
-        ft_close(fdf);
+    if (input == key_w)
+        fdf->pos.y += 20;
+    else if (input == key_s)
+        fdf->pos.y -= 20;
+    else if (input == key_d)
+        fdf->pos.x += 20;
+    else if (input == key_a)
+        fdf->pos.x -= 20;
+    else if (input == key_plus)
+        fdf->pos.z += 20;
+    else if (input == key_min)
+        fdf->pos.z -= 20;
     return (0);
 }
 
 int ft_mouse(int input, t_fdf *fdf)
 {
     if (input == scroll_forward || input == scroll_backward)
-//        ft_outlook();
-        printf("scroll\n");
-    else if (input == click_left)
-        printf("click %p %d\n", fdf, input);;
+
     return (0);
 }
 
