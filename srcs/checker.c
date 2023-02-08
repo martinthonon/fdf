@@ -53,10 +53,10 @@ int ft_typo(int fd, int i, int y)
     return (ft_ret(NULL, fd, 0));
 }
 
-int ft_extension(char *str)
+int ft_extension(char *path)
 {
     char *cpy;
-    cpy = ft_strrchr(str, '.');
+    cpy = ft_strrchr(path, '.');
     if (!cpy)
         return (1);
     if (ft_strncmp(cpy, ".fdf", 4))
@@ -64,18 +64,17 @@ int ft_extension(char *str)
     return (0);
 }
 
-int ft_file_checker(char *str)
+int ft_file_checker(t_fdf *fdf)
 {
-    int fd;
 
-    fd = open(str, O_RDONLY);
-    if (fd < 0)
+    fdf->input.fd = open(fdf->input.path, O_RDONLY);
+    if (fdf->input.fd < 0)
         return (ft_ret("File cannot be open\n", -1, 1));
-    else if (ft_extension(str))
-        return (ft_ret("wrong extension", fd, 1));
-    else if (ft_typo(fd, 0, 0))
-        return (ft_ret("empty file or incorrect typo\n", fd, 1));
-    else if (ft_len_check(str))
-        return (ft_ret("different line size\n", fd, 1));
+    else if (ft_extension(fdf->input.path))
+        return (ft_ret("wrong extension", fdf->input.fd, 1));
+    else if (ft_typo(fdf->input.fd, 0, 0))
+        return (ft_ret("empty file or incorrect typo\n", fdf->input.fd, 1));
+    else if (ft_len_check(fdf->input.path))
+        return (ft_ret("different line size\n", fdf->input.fd, 1));
     return (0);
 }

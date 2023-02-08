@@ -1,7 +1,7 @@
 SRCS_DIR	= ./SRCS/
 
 SRCS_FILE	= main.c utils.c \
- 				events.c engine.c engine_utils.c checker.c checker_utils.c
+ 				mlx.c engine.c engine_utils.c checker.c checker_utils.c
 
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 

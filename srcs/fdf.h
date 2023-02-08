@@ -23,10 +23,17 @@ typedef struct s_axis  {
     int z;
 }               t_axis;
 
+typedef struct s_file {
+
+    int fd;
+    char *path;
+}               t_file;
+
 typedef struct s_fdf {
 
     t_axis pos;
     t_vars vars;
+    t_file input;
 }               t_fdf;
 
 
@@ -65,8 +72,9 @@ int ft_free(const char *formats, ...);
 int ft_is_neg(char *str, int y);
 int ft_line_length(int fd);
 int ft_windows_init(t_fdf *fdf);
-int ft_engine_init(char *str, t_fdf *fdf);
+int ft_engine_init(t_fdf *fdf);
 int ft_grid_size(int fd, t_grid *grid);
+int ft_draw(t_fdf *fdf);
 int ft_resize(t_grid *grid);
-int ft_file_checker(char *str);
+int ft_file_checker(t_fdf *fdf);
 #endif

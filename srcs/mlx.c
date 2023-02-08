@@ -21,20 +21,20 @@ int ft_keyboard(int input, t_fdf *fdf)
         fdf->pos.z += 20;
     else if (input == key_min)
         fdf->pos.z -= 20;
+    ft_draw(fdf);
     return (0);
 }
 
 int ft_mouse(int input, t_fdf *fdf)
 {
+    (void)fdf;
     if (input == scroll_forward || input == scroll_backward)
-
+        printf("nothing here now\n");
     return (0);
 }
 
 int ft_windows_init(t_fdf *fdf)
 {
-    printf("windows init\n");
-
     fdf->vars.mlx = mlx_init();
     fdf->vars.win = mlx_new_window(fdf->vars.mlx, win_length, win_width, "FDF");
     mlx_key_hook(fdf->vars.win, ft_keyboard, fdf);
