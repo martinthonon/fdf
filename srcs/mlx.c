@@ -21,7 +21,9 @@ int ft_keyboard(int input, t_fdf *fdf)
         fdf->pos.z += 20;
     else if (input == key_min)
         fdf->pos.z -= 20;
-    ft_draw(fdf);
+    else if (input == key_esc)
+        ft_close(fdf);
+    ft_fdf_draw(fdf);
     return (0);
 }
 

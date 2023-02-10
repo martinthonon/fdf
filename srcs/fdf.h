@@ -23,6 +23,13 @@ typedef struct s_axis  {
     int z;
 }               t_axis;
 
+typedef struct s_grid {
+
+    int length;
+    int width;
+    int height;
+}               t_grid;
+
 typedef struct s_file {
 
     int fd;
@@ -33,17 +40,9 @@ typedef struct s_fdf {
 
     t_axis pos;
     t_vars vars;
+    t_grid grid;
     t_file input;
 }               t_fdf;
-
-
-
-typedef struct s_grid {
-
-    int length;
-    int width;
-    int height;
-}               t_grid;
 
 enum keyboard {
     key_plus = 69,
@@ -73,8 +72,9 @@ int ft_is_neg(char *str, int y);
 int ft_line_length(int fd);
 int ft_windows_init(t_fdf *fdf);
 int ft_engine_init(t_fdf *fdf);
-int ft_grid_size(int fd, t_grid *grid);
-int ft_draw(t_fdf *fdf);
-int ft_resize(t_grid *grid);
+int ft_grid_size(t_fdf *fdf);
+int ft_fdf_draw(t_fdf *fdf);
+char **ft_node_val(t_fdf *fdf);
+int ft_resize(t_fdf *fdf);
 int ft_file_checker(t_fdf *fdf);
 #endif

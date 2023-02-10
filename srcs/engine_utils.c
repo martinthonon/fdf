@@ -1,37 +1,65 @@
 #include "fdf.h"
 
-int ft_resize(t_grid *grid)
+int ft_resize(t_fdf *fdf)
 {
-    (void)grid;
+    (void)fdf;
 //    if (grid->length >= win_length)
 //        grid->length /= 1.5;
 //    if (grid->width >= win_width)
 //        grid->width /= 1.5;
     return 0;
 }
-int ft_grid_size(int fd, t_grid *grid)
+int ft_grid_size(t_fdf *fdf)
 {
     char *gnl;
     char **split;
-    int i;
 
-    grid->width = 0;
-    gnl = ft_get_next_line(fd);
+    fdf->input.fd = open(fdf->input.path, O_RDONLY);
+    if (fdf->input.fd < 0)
+        return (1);
+    fdf->grid.length = 0;
+    gnl = ft_get_next_line(fdf->input.fd);
     if (!gnl)
         return (1);
     while (gnl)
     {
-        grid->length = 0;
+        fdf->grid.length = 0;
         split = ft_split(gnl, ' ');
         if (!split)
             return (ft_free("%p", gnl) + 1);
-        i = -1;
-        while (split[++i])
-            if (split[i][0] != '\n')
-                grid->length++;
-        grid->width++;
+        while (split[++fdf->grid.length]) // fdf grid length instead of int i
+            if (split[fdf->grid.length][0] != '\n')
+                fdf->grid.length++;
+        fdf->grid.width++;
         ft_free("%p, %P", gnl, split);
-        gnl = ft_get_next_line(fd);
+        gnl = ft_get_next_line(fdf->input.fd);
     }
-    return (ft_ret(NULL, fd, 0));
+    return (ft_ret(NULL, fdf->input.fd, 0));
 }
+
+char **ft_node_val(t_fdf *fdf)
+{
+    char *gnl;
+    char **split;
+    int *p;
+    int i;
+
+    fdf->input.fd = open(fdf->input.path, O_RDONLY);
+    if (fdf->input.fd < 0)
+        return (NULL);
+    gnl = ft_get_next_line(fdf->input.fd);
+    if (!gnl)
+        return (NULL);
+    split = ft_split(gnl, ' ');
+    if (!split)
+        return (NULL);
+    i = 0;
+    while (split[i])
+    {
+        ++i;
+    }
+    p = malloc(sizeof(int) * i );
+    return (split);
+}
+
+

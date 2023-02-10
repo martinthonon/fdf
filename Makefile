@@ -1,4 +1,4 @@
-SRCS_DIR	= ./SRCS/
+SRCS_DIR	= ./srcs/
 
 SRCS_FILE	= main.c utils.c \
  				mlx.c engine.c engine_utils.c checker.c checker_utils.c

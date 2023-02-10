@@ -66,7 +66,7 @@ int ft_extension(char *path)
 
 int ft_file_checker(t_fdf *fdf)
 {
-
+    printf("1 -> fd : %d, path : %s\n", fdf->input.fd, fdf->input.path);
     fdf->input.fd = open(fdf->input.path, O_RDONLY);
     if (fdf->input.fd < 0)
         return (ft_ret("File cannot be open\n", -1, 1));
