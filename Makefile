@@ -5,8 +5,18 @@ SRCS_FILE	= main.c utils.c \
 
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 
+OS			= $(shell uname)
+
+ifeq ($(OS), Linux)
+
+
+else
+
+
 MLX			= -lmlx -framework OpenGL -framework AppKit
 
+
+endif
 LIBFT		= lib/libft/libft.a
 
 OBJS	= ${SRCS:.c=.o}
