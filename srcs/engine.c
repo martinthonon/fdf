@@ -1,22 +1,37 @@
 #include "fdf.h"
 
+//int ft_put_dot(t_fdf *fdf)
+//{
+//    if (fdf->proj.cabinet == true)
+//        ft_cabinet(fdf);
+//    else
+//
+//
+//}
+
 int ft_fdf_draw(t_fdf *fdf)
 {
     int i;
     int y;
-    char **node;
+    int *nptr;
 
+    fdf->input.fd = open(fdf->input.path, O_RDONLY);
+    if (fdf->input.fd < 0)
+        return (1);
     i = -1;
-    while (++i < win_width)
+    while (++i < fdf->grid.width)
     {
         y = -1;
-        node = ft_node_val(fdf);
-        printf("%d", node[i]);
-        while (++y < win_length)
+        nptr = ft_node_val(fdf);
+        if (!nptr)
+            return (1);
+        while (++y < fdf->grid.length)
         {
-            printf("cei est un test\n");
+            printf("%d ", nptr[y]);
 //            ft_put node();
         }
+        printf("\n");
+        free(nptr);
     }
     return (0);
 }

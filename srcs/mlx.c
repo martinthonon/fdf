@@ -9,7 +9,13 @@ int ft_close(t_fdf *fdf)
 
 int ft_keyboard(int input, t_fdf *fdf)
 {
-    if (input == key_w)
+    if (input == key_esc)
+        ft_close(fdf);
+    else if (input == key_plus)
+        fdf->pos.z += 20;
+    else if (input == key_min)
+        fdf->pos.z -= 20;
+    else if (input == key_w)
         fdf->pos.y += 20;
     else if (input == key_s)
         fdf->pos.y -= 20;
@@ -17,14 +23,17 @@ int ft_keyboard(int input, t_fdf *fdf)
         fdf->pos.x += 20;
     else if (input == key_a)
         fdf->pos.x -= 20;
-    else if (input == key_plus)
-        fdf->pos.z += 20;
-    else if (input == key_min)
-        fdf->pos.z -= 20;
-    else if (input == key_esc)
-        ft_close(fdf);
-    ft_fdf_draw(fdf);
-    return (0);
+    else if (input == key_i)
+    {
+        fdf->proj.isometric = true;
+        fdf->proj.cabinet = false;
+    }
+    else if (input == key_c)
+    {
+        fdf->proj.isometric = false;
+        fdf->proj.cabinet = true;
+    }
+    return (ft_fdf_draw(fdf), 0);
 }
 
 int ft_mouse(int input, t_fdf *fdf)

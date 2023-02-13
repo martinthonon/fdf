@@ -24,14 +24,14 @@ int ft_line_length(int fd)
     return (ft_free("%p, %P", gnl, split) + len);
 }
 
-int ft_is_neg(char *str, int y)
+int ft_is_neg(char *str, int j)
 {
-    if (str[y] == '-')
+    if (str[j] == '-')
     {
-        if (!ft_isdigit(str[y + 1]))
+        if (!ft_isdigit(str[j + 1]))
             return (1);
     }
-    else if (!ft_isdigit(str[y]))
+    else if (!ft_isdigit(str[j]))
         return (1);
     return (0);
 }

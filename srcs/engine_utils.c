@@ -37,29 +37,28 @@ int ft_grid_size(t_fdf *fdf)
     return (ft_ret(NULL, fdf->input.fd, 0));
 }
 
-char **ft_node_val(t_fdf *fdf)
+int *ft_node_val(t_fdf *fdf)
 {
     char *gnl;
     char **split;
-    int *p;
+    int *nptr;
     int i;
 
-    fdf->input.fd = open(fdf->input.path, O_RDONLY);
-    if (fdf->input.fd < 0)
-        return (NULL);
     gnl = ft_get_next_line(fdf->input.fd);
     if (!gnl)
         return (NULL);
     split = ft_split(gnl, ' ');
     if (!split)
-        return (NULL);
-    i = 0;
-    while (split[i])
+        return (ft_free("%p", gnl), NULL);
+    nptr = malloc(sizeof(int) * fdf->grid.length);
+    if (!nptr)
+        return (ft_free("%p, %P", gnl, split), NULL);
+    i = -1;
+    while (split[++i] && split[i][0] != '\n')
     {
-        ++i;
+        nptr[i] = ft_atoi(split[i]);
     }
-    p = malloc(sizeof(int) * i );
-    return (split);
+    return (ft_free("%p, %P", gnl, split), nptr);
 }
 
 

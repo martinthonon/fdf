@@ -25,7 +25,7 @@ int ft_len_check(char *str)
         return (ft_ret(NULL, fd, 0));
 }
 
-int ft_typo(int fd, int i, int y)
+int ft_typo(int fd, int i, int j)
 {
     char *gnl;
     char **split;
@@ -41,10 +41,10 @@ int ft_typo(int fd, int i, int y)
         i = -1;
         while (split[++i])
         {
-            y = -1;
-            while (split[i][++y])
-                if (!ft_isdigit(split[i][y]) && split[i][y] != '\n' &&
-                ft_is_neg(split[i], y))
+            j = -1;
+            while (split[i][++j])
+                if (!ft_isdigit(split[i][j]) && split[i][j] != '\n' &&
+                ft_is_neg(split[i], j))
                     return (ft_free("%p, %P", gnl, split) + 1);
         }
         ft_free("%p, %P", gnl, split);
