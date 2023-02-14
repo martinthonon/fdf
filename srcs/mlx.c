@@ -9,38 +9,31 @@ int ft_close(t_fdf *fdf)
 
 int ft_keyboard(int input, t_fdf *fdf)
 {
-    if (input == key_esc)
+
+    if (input == key_w || input == key_s || input == key_a || input == key_d)
+        ft_move(input, fdf);
+    else if (input == key_plus || input == key_min)
+        ft_zoom(input, fdf);
+    else if (input == key_i || input == key_c)
+        ft_type(input, fdf);
+    else if (input == key_esc)
         ft_close(fdf);
-    else if (input == key_plus)
-        fdf->pos.z += 20;
-    else if (input == key_min)
-        fdf->pos.z -= 20;
-    else if (input == key_w)
-        fdf->pos.y += 20;
-    else if (input == key_s)
-        fdf->pos.y -= 20;
-    else if (input == key_d)
-        fdf->pos.x += 20;
-    else if (input == key_a)
-        fdf->pos.x -= 20;
-    else if (input == key_i)
-    {
-        fdf->proj.isometric = true;
-        fdf->proj.cabinet = false;
-    }
-    else if (input == key_c)
-    {
-        fdf->proj.isometric = false;
-        fdf->proj.cabinet = true;
-    }
-    return (ft_fdf_draw(fdf), 0);
+    return (0);
 }
 
 int ft_mouse(int input, t_fdf *fdf)
 {
-    (void)fdf;
-    if (input == scroll_forward || input == scroll_backward)
-        printf("nothing here now\n");
+    if (input == scroll_forward)
+    {
+        printf("scroll forward\n"); //outlook
+        ft_mlx_mouse(input, fdf);
+//        ft_fdf_draw(fdf);
+    }
+    else if (input == scroll_backward)
+    {
+        printf("scroll backward\n");
+        ft_fdf_draw(fdf);
+    }
     return (0);
 }
 

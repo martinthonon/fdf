@@ -14,11 +14,17 @@ int ft_fdf_draw(t_fdf *fdf)
     int i;
     int y;
     int *nptr;
-
+    printf("test3\n");
+    printf("%d\n", fdf->input.fd);
     fdf->input.fd = open(fdf->input.path, O_RDONLY);
     if (fdf->input.fd < 0)
+    {
+        printf("wrong fd\n");
         return (1);
+    }
+    printf("wrong fd ?\n");
     i = -1;
+    printf("test4\n");
     while (++i < fdf->grid.width)
     {
         y = -1;
@@ -33,6 +39,8 @@ int ft_fdf_draw(t_fdf *fdf)
         printf("\n");
         free(nptr);
     }
+    printf("test5\n");
+    close(fdf->input.fd);
     return (0);
 }
 

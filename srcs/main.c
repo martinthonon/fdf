@@ -7,11 +7,14 @@ void ft_fdf_init(t_fdf *fdf, char *path)
     fdf->pos.z = 0;
     fdf->vars.mlx = NULL;
     fdf->vars.win = NULL;
+    fdf->grid.length = 0;
+    fdf->grid.width = 0;
+    fdf->grid.height = 0;
+    fdf->grid.space = 0;
     fdf->proj.isometric = true;
     fdf->proj.cabinet = false;
     fdf->input.fd = -1;
     fdf->input.path = path;
-
 }
 int main(int argc, char **argv)
 {

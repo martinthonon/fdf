@@ -28,6 +28,7 @@ typedef struct s_grid {
     int length;
     int width;
     int height;
+    float space;
 }               t_grid;
 
 typedef struct s_type {
@@ -47,8 +48,8 @@ typedef struct s_fdf {
 
     t_axis pos;
     t_vars vars;
-    t_type proj;
     t_grid grid;
+    t_type proj;
     t_file input;
 }               t_fdf;
 
@@ -81,15 +82,24 @@ enum window {
 };
 
 int main(int argc, char **argv);
+
 int ft_ret(char *str, int fd, int ret);
 int ft_free(const char *formats, ...);
+
+int ft_windows_init(t_fdf *fdf);
+void ft_move(int input, t_fdf *fdf);
+void ft_zoom(int input, t_fdf *fdf);
+void ft_type(int input, t_fdf *fdf);
+void ft_mlx_mouse(int input, t_fdf *fdf);
+
+int ft_file_checker(t_fdf *fdf);
 int ft_is_neg(char *str, int j);
 int ft_line_length(int fd);
-int ft_windows_init(t_fdf *fdf);
+
 int ft_engine_init(t_fdf *fdf);
 int ft_grid_size(t_fdf *fdf);
 int ft_fdf_draw(t_fdf *fdf);
 int *ft_node_val(t_fdf *fdf);
 int ft_resize(t_fdf *fdf);
-int ft_file_checker(t_fdf *fdf);
+
 #endif
