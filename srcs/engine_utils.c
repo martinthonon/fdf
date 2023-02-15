@@ -39,11 +39,11 @@ int ft_grid_size(t_fdf *fdf)
     return (ft_ret(NULL, fdf->input.fd, 0));
 }
 
-int *ft_node_val(t_fdf *fdf)
+long *ft_node_val(t_fdf *fdf)
 {
     char *gnl;
     char **split;
-    int *nptr;
+    long *nptr;
     int i;
 
     gnl = ft_get_next_line(fdf->input.fd);
@@ -53,13 +53,15 @@ int *ft_node_val(t_fdf *fdf)
     if (!split)
         return (ft_free("%p", gnl), NULL);
     printf("--------------------------------------------%d\n", fdf->grid.length);
-    nptr = malloc(sizeof(int) * fdf->grid.length);
+    nptr = malloc(sizeof(long) * fdf->grid.length);
     if (!nptr)
         return (ft_free("%p, %P", gnl, split), NULL);
     i = -1;
     while (split[++i] && split[i][0] != '\n')
     {
-        nptr[i] = ft_atoi(split[i]);
+        nptr[i] = ft_atol(split[i]);
+        if (nptr[i] > INT_MAX || nptr[i] < INT_MIN)
+            return (NULL);
     }
     return (ft_free("%p, %P", gnl, split), nptr);
 }

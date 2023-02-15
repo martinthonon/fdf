@@ -16,29 +16,45 @@ void ft_move(int input, t_fdf *fdf)
 void ft_zoom(int input, t_fdf *fdf)
 {
     if (input == key_plus)
-        printf("zoom in\n");
-    else if (input == key_min) //else would be more clean, but less readable
-        printf("zoom out\n");
-    ft_fdf_draw(fdf);
+        fdf->grid.space += 20;
+    else if (input == key_min)
+        fdf->grid.space -= 20;
+}
+void ft_rotation(int input, t_fdf *fdf)
+{
+    if (fdf->flag.rotation == true)
+    {
+        if (input == key_up)
+            printf("rot up\n");
+        else if (input == key_down)
+            printf("rot down\n");
+        else if (input == key_left)
+            printf("rot left\n");
+        else if (input == key_right)
+            printf("rot right\n");
+        ft_fdf_draw(fdf);
+    }
 }
 
-void ft_type(int input, t_fdf *fdf)
+void ft_flag(int input, t_fdf *fdf)
 {
-    if (input == key_i)
+    if (input == key_r)
     {
-        fdf->proj.isometric = true;
-        fdf->proj.cabinet = false;
+        if (fdf->flag.rotation == true)
+            fdf->flag.rotation = false;
+        else
+            fdf->flag.rotation = true;
+    }
+    else if (input == key_i)
+    {
+        fdf->flag.isometric = true;
+        fdf->flag.cabinet = false;
+        ft_fdf_draw(fdf);
     }
     else if (input == key_c)
     {
-        fdf->proj.isometric = false;
-        fdf->proj.cabinet = true;
-    }
-    ft_fdf_draw(fdf);
-}
-
-void ft_mlx_mouse(int input, t_fdf *fdf)
-{
-    (void)input;
+        fdf->flag.isometric = false;
+        fdf->flag.cabinet = true;
         ft_fdf_draw(fdf);
+    }
 }

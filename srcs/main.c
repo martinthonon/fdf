@@ -10,9 +10,10 @@ void ft_fdf_init(t_fdf *fdf, char *path)
     fdf->grid.length = 0;
     fdf->grid.width = 0;
     fdf->grid.height = 0;
-    fdf->grid.space = 0;
-    fdf->proj.isometric = true;
-    fdf->proj.cabinet = false;
+    fdf->grid.space = 100;
+    fdf->flag.isometric = true;
+    fdf->flag.cabinet = false;
+    fdf->flag.rotation = false;
     fdf->input.fd = -1;
     fdf->input.path = path;
 }
