@@ -10,7 +10,10 @@ void ft_fdf_init(t_fdf *fdf, char *path)
     fdf->grid.length = 0;
     fdf->grid.width = 0;
     fdf->grid.height = 0;
-    fdf->grid.space = 100;
+    fdf->grid.angle.x = 0;
+    fdf->grid.angle.y = 0;
+    fdf->grid.space.x = 10;
+    fdf->grid.space.y = 10;
     fdf->flag.isometric = true;
     fdf->flag.cabinet = false;
     fdf->flag.rotation = false;

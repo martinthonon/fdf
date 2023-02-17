@@ -18,9 +18,9 @@ typedef struct	s_vars {
 
 typedef struct s_axis  {
 
-    int x;
-    int y;
-    int z;
+    float x;
+    float y;
+    float z;
 }               t_axis;
 
 typedef struct s_grid {
@@ -28,7 +28,8 @@ typedef struct s_grid {
     int length;
     int width;
     int height;
-    float space;
+    t_axis angle;
+    t_axis space;
 }               t_grid;
 
 typedef struct s_flag {
@@ -77,8 +78,8 @@ enum keyboard {
 };
 
 enum window {
-    win_length = 1500,
-    win_width = 1000,
+    win_length = 1920,
+    win_width = 1080,
 };
 
 int main(int argc, char **argv);
@@ -101,7 +102,8 @@ int ft_engine_init(t_fdf *fdf);
 int ft_grid_size(t_fdf *fdf);
 int ft_fdf_draw(t_fdf *fdf);
 long *ft_node_val(t_fdf *fdf);
-int ft_put_dot(int z, t_fdf *fdf);
+//int ft_put_dot(int z, t_fdf *fdf);
+int ft_put_dot(int x, int y, int z, t_fdf *fdf);
 int ft_resize(t_fdf *fdf);
 
 #endif
