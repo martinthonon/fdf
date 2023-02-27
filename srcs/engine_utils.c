@@ -1,13 +1,30 @@
 #include "fdf.h"
 
-int ft_resize(t_fdf *fdf)
+int ft_get_node(t_fdf *fdf)
 {
-    (void)fdf;
-    printf("test\n");
-//    if (grid->length >= win_length)
-//        grid->length /= 1.5;
-//    if (grid->width >= win_width)
-//        grid->width /= 1.5;
+    int i;
+    int j;
+    int surface;
+    long *nptr;
+
+
+    fdf->input.fd = open(fdf->input.path, O_RDONLY);
+    if (fdf->input.fd < 0)
+        return(1);
+    surface = fdf->grid.length * fdf->grid.height;
+    fdf->grid.input = malloc(sizeof(int) * surface);
+    if (!fdf->grid.input)
+        return (1);
+    i = -1;
+    while (++i < fdf->grid.width)
+    {
+        j = -1;
+        nptr = ft_node_val(fdf);
+        while (++j < fdf->grid.length)
+        {
+            fdf->grid.input[j] = nptr[j];
+        }
+    }
     return 0;
 }
 int ft_grid_size(t_fdf *fdf)
@@ -27,7 +44,7 @@ int ft_grid_size(t_fdf *fdf)
         fdf->grid.length = 0;
         split = ft_split(gnl, ' ');
         if (!split)
-            return (ft_free("%p", gnl) + 1);
+            return (free(gnl), 1);
         i = -1;
         while (split[++i]) // fdf grid length instead of int i
             if (split[i][0] != '\n')
@@ -51,7 +68,7 @@ long *ft_node_val(t_fdf *fdf)
         return (NULL);
     split = ft_split(gnl, ' ');
     if (!split)
-        return (ft_free("%p", gnl), NULL);
+        return (free(gnl), NULL);
     printf("--------------------------------------------%d\n", fdf->grid.length);
     nptr = malloc(sizeof(long) * fdf->grid.length);
     if (!nptr)

@@ -28,6 +28,7 @@ typedef struct s_grid {
     int length;
     int width;
     int height;
+    long *input;
     t_axis angle;
     t_axis space;
 }               t_grid;
@@ -51,6 +52,7 @@ typedef struct s_fdf {
     t_axis pos;
     t_vars vars;
     t_grid grid;
+    t_list *head;
     t_flag flag;
     t_file input;
 }               t_fdf;
@@ -104,6 +106,6 @@ int ft_fdf_draw(t_fdf *fdf);
 long *ft_node_val(t_fdf *fdf);
 //int ft_put_dot(int z, t_fdf *fdf);
 int ft_put_dot(int x, int y, int z, t_fdf *fdf);
-int ft_resize(t_fdf *fdf);
+int ft_get_node(t_fdf *fdf);
 
 #endif

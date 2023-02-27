@@ -74,8 +74,8 @@ int ft_engine_init(t_fdf *fdf)
 {
     if (ft_grid_size(fdf))
         return (ft_ret(NULL, fdf->input.fd, 1));
-    else if (ft_resize(fdf))
-        return (1);
+    else if (ft_get_node(fdf)) //make malloc of len * height in fdf->gid.input
+        return (ft_ret(NULL, fdf->input.fd, 1));
     else if (ft_fdf_draw(fdf))
     {
         printf("check\n");
