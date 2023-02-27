@@ -37,7 +37,7 @@ int ft_typo(int fd, int i, int j)
     {
         split = ft_split(gnl, ' ');
         if (!split)
-            return (ft_free("%p", gnl) + 1);
+            return (free(gnl), 1);
         i = -1;
         while (split[++i])
         {

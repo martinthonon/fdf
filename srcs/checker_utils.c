@@ -12,7 +12,7 @@ int ft_line_length(int fd)
         return (ft_ret(NULL, fd, 0));
     split = ft_split(gnl, ' ');
     if (!split)
-        return (ft_free("%p", gnl) + ft_ret(NULL, fd, -1));
+        return (free(gnl), ft_ret(NULL, fd, -1));
     if (split[0][0] == '\n')
         return (ft_free("%p, %P", gnl, split) + ft_ret(NULL, fd, -1));
     i = 0;

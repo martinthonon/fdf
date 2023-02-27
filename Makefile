@@ -19,16 +19,16 @@ CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
-SANITIZE	= -fsanitize=address -g -O1 -fno-omit-frame-pointer
+#SANITIZE	= -fsanitize=address -g -O1 -fno-omit-frame-pointer
 
 RM		= rm -f
 
 .c.o:
-	$(CC) $(CFLAGS) $(SANITIZE) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME):	$(OBJS)
 	make -C lib/libft
-	$(CC) $(CFLAGS) $(SANITIZE) $(OBJS) $(MLX) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME) $(LIBFT)
 
 all :	$(NAME)
 

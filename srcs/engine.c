@@ -1,9 +1,6 @@
 #include "fdf.h"
 
-//int ft_draw_line(int x, int y, t_fdf *fdf)
-//{
-//
-//}
+
 int ft_put_dot(int x, int y, int z, t_fdf *fdf)
 {
 //    if (fdf->proj.cabinet == true)
@@ -22,8 +19,8 @@ int ft_put_dot(int x, int y, int z, t_fdf *fdf)
 //    u=(x-z)/sqrt(2);
 //    v=(x+2*y+z)/sqrt(6);
 //    rtn.x = cos(deg_to_rad(angle)) * (y - fdf->map.size.y / 2) - cos(deg_to_rad(angle)) * (x - fdf->map.size.x / 2);
-    u = x * cos(5.5) + y * cos(fdf->grid.angle.x + 5.5) + z * cos(fdf->grid.angle.x - 5.5);
-    v = x * sin(4.5) + y * sin(fdf->grid.angle.y + 4.5) + z * sin(fdf->grid.angle.y - 4.5);
+    u = x * cos(fdf->grid.angle.x) + y * cos(fdf->grid.angle.x + 30) + z * cos(fdf->grid.angle.x - 30);
+    v = x * sin(fdf->grid.angle.y) + y * sin(fdf->grid.angle.y + 30) + z * sin(fdf->grid.angle.y - 30);
 
 
     u += fdf->pos.x;
@@ -35,38 +32,29 @@ int ft_put_dot(int x, int y, int z, t_fdf *fdf)
 
 int ft_fdf_draw(t_fdf *fdf)
 {
+    int surface;
     int i;
     int j;
     int x;
     int y;
-    long *nptr;
-    fdf->input.fd = open(fdf->input.path, O_RDONLY);
-    if (fdf->input.fd < 0)
-        return (1);
+
     y = 100;
     i = -1;
+    surface = fdf->grid.length * fdf->grid.width;
     while (++i < fdf->grid.width)
     {
         j = -1;
         x = 100;
-        //x += fdf->grid.space.x;
-        nptr = ft_node_val(fdf);
-        if (!nptr)
-            return (1);
         while (++j < fdf->grid.length)
         {
-            printf("%ld ", nptr[j]);
-            ft_put_dot(x, y, nptr[j], fdf);
+            printf("%ld ", fdf->grid.input[surface]);
+            ft_put_dot(x, y, fdf->grid.input[--surface], fdf);
             //x += 10;
             x += fdf->grid.space.x;
         }
-        //y += 10;
         y += fdf->grid.space.y;
         printf("\n");
-        free(nptr);
     }
-//    ft_line_draw(x, y, fdf);
-    close(fdf->input.fd);
     return (0);
 }
 
@@ -81,7 +69,6 @@ int ft_engine_init(t_fdf *fdf)
         printf("check\n");
         return (1);
     }
-
     printf("1 -> fd : %d, path : %s\n", fdf->input.fd, fdf->input.path);
     printf("length -> %d, width -> %d\n", fdf->grid.length, fdf->grid.width);
 //    for (int i = 0; i <= 200; ++i)

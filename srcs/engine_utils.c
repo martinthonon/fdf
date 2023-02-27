@@ -7,12 +7,11 @@ int ft_get_node(t_fdf *fdf)
     int surface;
     long *nptr;
 
-
     fdf->input.fd = open(fdf->input.path, O_RDONLY);
     if (fdf->input.fd < 0)
         return(1);
-    surface = fdf->grid.length * fdf->grid.height;
-    fdf->grid.input = malloc(sizeof(int) * surface);
+    surface = fdf->grid.length * fdf->grid.width;
+    fdf->grid.input = malloc(sizeof(long) * surface);
     if (!fdf->grid.input)
         return (1);
     i = -1;
@@ -20,12 +19,14 @@ int ft_get_node(t_fdf *fdf)
     {
         j = -1;
         nptr = ft_node_val(fdf);
+        if (!nptr)
+            return (1);
         while (++j < fdf->grid.length)
-        {
-            fdf->grid.input[j] = nptr[j];
-        }
+            fdf->grid.input[--surface] = nptr[j];
+        free(nptr);
     }
-    return 0;
+    close(fdf->input.fd);
+    return (0);
 }
 int ft_grid_size(t_fdf *fdf)
 {
@@ -77,9 +78,11 @@ long *ft_node_val(t_fdf *fdf)
     while (split[++i] && split[i][0] != '\n')
     {
         nptr[i] = ft_atol(split[i]);
+        printf("%ld|", nptr[i]);
         if (nptr[i] > INT_MAX || nptr[i] < INT_MIN)
             return (NULL);
     }
+    printf("\n");
     return (ft_free("%p, %P", gnl, split), nptr);
 }
 
