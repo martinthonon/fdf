@@ -19,8 +19,8 @@ int ft_put_dot(int x, int y, int z, t_fdf *fdf)
 //    u=(x-z)/sqrt(2);
 //    v=(x+2*y+z)/sqrt(6);
 //    rtn.x = cos(deg_to_rad(angle)) * (y - fdf->map.size.y / 2) - cos(deg_to_rad(angle)) * (x - fdf->map.size.x / 2);
-    u = x * cos(fdf->grid.angle.x) + y * cos(fdf->grid.angle.x + 30) + z * cos(fdf->grid.angle.x - 30);
-    v = x * sin(fdf->grid.angle.y) + y * sin(fdf->grid.angle.y + 30) + z * sin(fdf->grid.angle.y - 30);
+    u = x * cos(fdf->grid.angle.x) + y * cos(fdf->grid.angle.x + 120) + z * cos(fdf->grid.angle.x - 120);
+    v = x * sin(fdf->grid.angle.y) + y * sin(fdf->grid.angle.y + 120) + z * sin(fdf->grid.angle.y - 120);
 
 
     u += fdf->pos.x;
@@ -47,13 +47,10 @@ int ft_fdf_draw(t_fdf *fdf)
         x = 100;
         while (++j < fdf->grid.length)
         {
-            printf("%ld ", fdf->grid.input[surface]);
             ft_put_dot(x, y, fdf->grid.input[--surface], fdf);
-            //x += 10;
             x += fdf->grid.space.x;
         }
         y += fdf->grid.space.y;
-        printf("\n");
     }
     return (0);
 }
