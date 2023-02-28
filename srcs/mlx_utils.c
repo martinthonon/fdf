@@ -3,13 +3,13 @@
 void ft_move(int input, t_fdf *fdf)
 {
     if (input == key_w)
-        fdf->pos.y -= 20;
+        fdf->move.y -= 20;
     else if (input == key_s)
-        fdf->pos.y += 20;
+        fdf->move.y += 20;
     else if (input == key_a)
-        fdf->pos.x -= 20;
+        fdf->move.x -= 20;
     else if (input == key_d)
-        fdf->pos.x += 20;
+        fdf->move.x += 20;
     ft_fdf_draw(fdf);
 }
 

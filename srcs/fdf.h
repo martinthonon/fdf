@@ -49,10 +49,10 @@ typedef struct s_file {
 
 typedef struct s_fdf {
 
-    t_axis pos;
+    t_axis *pos;
+    t_axis move;
     t_vars vars;
     t_grid grid;
-    t_list *head;
     t_flag flag;
     t_file input;
 }               t_fdf;

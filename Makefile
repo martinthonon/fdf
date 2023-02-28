@@ -27,7 +27,7 @@ RM		= rm -f
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME):	$(OBJS)
-	make -C lib/libft
+	make bonus -C lib/libft
 	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME) $(LIBFT)
 
 all :	$(NAME)

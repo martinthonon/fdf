@@ -3,6 +3,7 @@
 int ft_close(t_fdf *fdf)
 {
     mlx_destroy_window(fdf->vars.mlx, fdf->vars.win);
+    free(fdf->grid.input);
     system("leaks fdf");
     exit(0);
 }
