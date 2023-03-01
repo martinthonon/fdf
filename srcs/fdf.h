@@ -18,9 +18,8 @@ typedef struct	s_vars {
 
 typedef struct s_axis  {
 
-    float x;
-    float y;
-    float z;
+    int x;
+    int y;
 }               t_axis;
 
 typedef struct s_grid {
@@ -51,6 +50,7 @@ typedef struct s_fdf {
 
     t_axis *pos;
     t_axis move;
+    t_axis origin;
     t_vars vars;
     t_grid grid;
     t_flag flag;
@@ -104,8 +104,9 @@ int ft_engine_init(t_fdf *fdf);
 int ft_grid_size(t_fdf *fdf);
 int ft_fdf_draw(t_fdf *fdf);
 long *ft_node_val(t_fdf *fdf);
+void ft_draw_line(t_fdf *fdf);
 //int ft_put_dot(int z, t_fdf *fdf);
-int ft_put_dot(int x, int y, int z, t_fdf *fdf);
+int ft_isometric(int n_node, t_fdf *fdf);
 int ft_get_node(t_fdf *fdf);
 
 #endif

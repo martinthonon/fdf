@@ -6,7 +6,8 @@ void ft_fdf_init(t_fdf *fdf, char *path)
     fdf->move.y = 0;
     fdf->grid.length = 0;
     fdf->grid.width = 0;
-    fdf->grid.height = 0;
+    fdf->origin.x = 100;
+    fdf->origin.y = 100;
     fdf->grid.angle.x = 0;
     fdf->grid.angle.y = 0;
     fdf->grid.space.x = 10;

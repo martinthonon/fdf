@@ -3,7 +3,8 @@ SRCS_DIR	= ./srcs/
 SRCS_FILE	= main.c utils.c \
  				mlx.c mlx_utils.c \
  				engine.c engine_utils.c \
- 				checker.c checker_utils.c
+ 				checker.c checker_utils.c \
+ 				bresenham.c
 
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILE))
 
@@ -17,7 +18,7 @@ NAME	= fdf
 
 CC		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -O3
 
 #SANITIZE	= -fsanitize=address -g -O1 -fno-omit-frame-pointer
 
