@@ -14,8 +14,11 @@ int ft_isometric(int n_node, t_fdf *fdf)
 //    y -= fdf->grid.width / 2;
 //    fdf->pos->x = (x-z)/sqrt(2);
 //    fdf->pos->y = (x+2*y+z)/sqrt(6);
-    fdf->pos->x = x * cos(rad(fdf->grid.angle.x)) + y * cos(rad(fdf->grid.angle.x) + 120) + z * cos(rad(fdf->grid.angle.x) - 120);
-    fdf->pos->y = x * sin(rad(fdf->grid.angle.y)) + y * sin(rad(fdf->grid.angle.y) + 120) + z * sin(rad(fdf->grid.angle.y) - 120);
+//    fdf->pos->x = x * cos(rad(fdf->grid.angle.x)) + y * cos(rad(fdf->grid.angle.x) + 120) + z * cos(rad(fdf->grid.angle.x) - 120);
+//    fdf->pos->y = x * sin(rad(fdf->grid.angle.y)) + y * sin(rad(fdf->grid.angle.y) + 120) + z * sin(rad(fdf->grid.angle.y) - 120);
+
+    fdf->pos->x = x * cos(rad(fdf->grid.angle.x)) + y * cos(rad(fdf->grid.angle.x + 120)) + z * cos(rad(fdf->grid.angle.x - 120));
+    fdf->pos->y = x * sin(rad(fdf->grid.angle.y)) + y * sin(rad(fdf->grid.angle.y + 120)) + z * sin(rad(fdf->grid.angle.y - 120));
 
 //    fdf->pos->x = x * cos(rad(fdf->flag.angle)) + y * cos(rad(fdf->flag.angle) + 120) + z * cos(rad(fdf->flag.angle) + 120);
 //    fdf->pos->y = x * sin(rad(fdf->flag.angle)) + y * sin(rad(fdf->flag.angle) - 120) + z * sin(rad(fdf->flag.angle) - 120);
