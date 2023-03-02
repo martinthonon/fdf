@@ -17,13 +17,13 @@ void ft_zoom(int input, t_fdf *fdf)
 {
     if (input == key_plus)
     {
-        fdf->grid.space.x += 5;
-        fdf->grid.space.y += 5;
+        fdf->grid.space.x += 1;
+        fdf->grid.space.y += 1;
     }
     else if (input == key_min)
     {
-        fdf->grid.space.x -= 5;
-        fdf->grid.space.y -= 5;
+        fdf->grid.space.x -= 1;
+        fdf->grid.space.y -= 1;
     }
     ft_fdf_draw(fdf);
 }
