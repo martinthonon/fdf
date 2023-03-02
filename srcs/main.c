@@ -8,8 +8,9 @@ void ft_fdf_init(t_fdf *fdf, char *path)
     fdf->grid.width = 0;
     fdf->origin.x = 100;
     fdf->origin.y = 100;
-    fdf->grid.angle.x = 0;
-    fdf->grid.angle.y = 0;
+    fdf->flag.angle = 20;
+    fdf->grid.angle.x = 30;
+    fdf->grid.angle.y = 30;
     fdf->grid.space.x = 10;
     fdf->grid.space.y = 10;
     fdf->flag.isometric = true;

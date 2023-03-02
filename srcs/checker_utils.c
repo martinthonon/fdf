@@ -20,7 +20,6 @@ int ft_line_length(int fd)
     while (split[i])
         if (split[i++][0] != '\n')
             ++len;
-    printf("%d\n", len);
     return (ft_free("%p, %P", gnl, split) + len);
 }
 

@@ -4,7 +4,6 @@ int ft_close(t_fdf *fdf)
 {
     mlx_destroy_window(fdf->vars.mlx, fdf->vars.win);
     free(fdf->grid.input);
-    system("leaks fdf");
     exit(0);
 }
 
@@ -22,7 +21,6 @@ int ft_keyboard(int input, t_fdf *fdf)
         ft_flag(input, fdf);
     else if (input == key_esc)
         ft_close(fdf);
-    printf("input %d\n", input);
     return (0);
 }
 

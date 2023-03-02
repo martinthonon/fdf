@@ -38,6 +38,11 @@ int ft_free(const char *formats, ...)
     return (0);
 }
 
+double	rad(int degree)
+{
+    return (degree * 3.14159265F / 180.0F);
+}
+
 long	ft_atol(char *nptr)
 {
     char				op;

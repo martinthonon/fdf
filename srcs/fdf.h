@@ -35,6 +35,7 @@ typedef struct s_grid {
 typedef struct s_flag {
 
     int rotation;
+    int angle;
     int isometric;
     int cabinet;
 
@@ -89,6 +90,7 @@ int main(int argc, char **argv);
 int ft_ret(char *str, int fd, int ret);
 int ft_free(const char *formats, ...);
 long	ft_atol(char *nptr);
+double	rad(int degree);
 
 int ft_windows_init(t_fdf *fdf);
 void ft_move(int input, t_fdf *fdf);
