@@ -9,6 +9,8 @@ int ft_isometric(int n_node, t_fdf *fdf)
     x = fdf->origin.x;
     y = fdf->origin.y;
     z = fdf->grid.input[n_node];
+    if (z > 0)
+        z += fdf->move.z;
     fdf->pos->x = x * cos(rad(fdf->grid.angle.x)) + y * cos(rad(fdf->grid.angle.x + 120)) + z * cos(rad(fdf->grid.angle.x - 120));
     fdf->pos->y = x * sin(rad(fdf->grid.angle.y)) + y * sin(rad(fdf->grid.angle.y + 120)) + z * sin(rad(fdf->grid.angle.y - 120));
     fdf->pos->x += fdf->move.x + x;

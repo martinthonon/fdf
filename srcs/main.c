@@ -4,6 +4,7 @@ void ft_fdf_init(t_fdf *fdf, char *path)
 {
     fdf->move.x = 0;
     fdf->move.y = 0;
+    fdf->move.z = 0;
     fdf->grid.length = 0;
     fdf->grid.width = 0;
     fdf->origin.x = 100;

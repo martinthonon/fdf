@@ -10,8 +10,7 @@ int ft_close(t_fdf *fdf)
 
 int ft_keyboard(int input, t_fdf *fdf)
 {
-
-    if (input == key_w || input == key_s || input == key_a || input == key_d)
+    if (input == key_w || input == key_s || input == key_a || input == key_d || input == key_enter || input == key_back)
         ft_move(input, fdf);
     else if (input == key_up || input == key_down || input == key_right || input == key_left)
         ft_rotation(input, fdf);
@@ -21,6 +20,7 @@ int ft_keyboard(int input, t_fdf *fdf)
         ft_flag(input, fdf);
     else if (input == key_esc)
         ft_close(fdf);
+    printf("%d\n", input);
     return (0);
 }
 

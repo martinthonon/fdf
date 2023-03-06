@@ -20,6 +20,7 @@ typedef struct s_axis  {
 
     int x;
     int y;
+    int z;
 }               t_axis;
 
 typedef struct s_grid {
@@ -78,6 +79,8 @@ enum keyboard {
     key_down = 125,
     key_left = 123,
     key_right = 124,
+    key_enter = 36,
+    key_back = 51,
 };
 
 enum window {

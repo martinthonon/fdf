@@ -10,6 +10,10 @@ void ft_move(int input, t_fdf *fdf)
         fdf->move.x -= 20;
     else if (input == key_d)
         fdf->move.x += 20;
+    else if (input == key_enter)
+        fdf->move.z += 20;
+    else if (input == key_back)
+        fdf->move.z -= 20;
     ft_fdf_draw(fdf);
 }
 
