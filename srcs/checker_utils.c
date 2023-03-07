@@ -1,36 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mathonon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/06 15:20:02 by mathonon          #+#    #+#             */
+/*   Updated: 2023/03/06 15:23:26 by mathonon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-int ft_line_length(int fd)
+int	ft_line_length(int fd)
 {
-    char *gnl;
-    char **split;
-    int len;
-    int i;
+	char	*gnl;
+	char	**split;
+	int		len;
+	int		i;
 
-    gnl = ft_get_next_line(fd);
-    if (!gnl)
-        return (ft_ret(NULL, fd, 0));
-    split = ft_split(gnl, ' ');
-    if (!split)
-        return (free(gnl), ft_ret(NULL, fd, -1));
-    if (split[0][0] == '\n')
-        return (ft_free("%p, %P", gnl, split) + ft_ret(NULL, fd, -1));
-    i = 0;
-    len = 0;
-    while (split[i])
-        if (split[i++][0] != '\n')
-            ++len;
-    return (ft_free("%p, %P", gnl, split) + len);
+	gnl = ft_get_next_line(fd);
+	if (!gnl)
+		return (ft_ret(NULL, fd, 0));
+	split = ft_split(gnl, ' ');
+	if (!split)
+		return (free(gnl), ft_ret(NULL, fd, -1));
+	if (split[0][0] == '\n')
+		return (ft_free("%p, %P", gnl, split) + ft_ret(NULL, fd, -1));
+	i = 0;
+	len = 0;
+	while (split[i])
+		if (split[i++][0] != '\n')
+			++len;
+	return (ft_free("%p, %P", gnl, split) + len);
 }
 
-int ft_is_neg(char *str, int j)
+int	ft_is_neg(char *str, int j)
 {
-    if (str[j] == '-')
-    {
-        if (!ft_isdigit(str[j + 1]))
-            return (1);
-    }
-    else if (!ft_isdigit(str[j]))
-        return (1);
-    return (0);
+	if (str[j] == '-')
+	{
+		if (!ft_isdigit(str[j + 1]))
+			return (1);
+	}
+	else if (!ft_isdigit(str[j]))
+		return (1);
+	return (0);
 }
